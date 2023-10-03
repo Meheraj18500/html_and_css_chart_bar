@@ -1,0 +1,333 @@
+
+
+/* Custom Font */
+@font-face {
+    font-family: 'LinLibertine';
+    src: url(font/LinLibertine_R.ttf);
+}
+
+/* Basic Setup */
+:root{
+    --progress: ;
+    --common-number: 29;
+}
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'LinLibertine', sans-serif;
+    background-color: #0d0d0d;
+}
+
+section {
+    max-width: 1700px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.main-window {
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 5%;
+    background-color: #0d0d0d;
+    color: #fff;
+    overflow: hidden;
+
+}
+
+/* Gird Container */
+.main-window .left-part {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 45%;
+}
+
+.main-window .right-part {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main-window .middle-part {
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.main-window .left-part h2 {
+    font-size: 50px;
+    text-transform: capitalize;
+    margin: 0;
+    color: #fff;
+}
+
+.main-window .left-part h2 span {
+    color: #43619c;
+}
+
+.main-window .left-part .bottom-part {
+    margin-top: 150px;
+}
+
+.main-window .left-part h1 {
+    font-size: 70px;
+    margin: 0;
+}
+
+.main-window .left-part h1 span {
+    font-size: 20px;
+}
+
+.main-window .left-part p {
+    width: 80%;
+}
+
+.main-window .right-part {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-window .right-part .content-box {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.main-window .right-part .content-box .color-bar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.main-window .right-part .content-box .content h3 {
+    font-size: 25px;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 400;
+}
+
+.main-window .right-part .content-box .content p {
+    margin: 0;
+    padding: 0;
+    text-transform: none;
+}
+
+
+/* Chart Functionality with Css */
+.cart_box {
+    overflow: hidden;
+    width: 600px;
+    height: 600px;
+    padding-top: 300px;
+    perspective: 70em;
+    perspective-origin: 50% calc(50% - 50em);
+    background: transparent;
+}
+
+.cart_box div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+}
+
+.maindiv {
+    transform: rotateY(40deg) translate3d(0, -10em, 5em);
+    /* animation: move 7s linear infinite; */
+}
+
+@keyframes move {
+    to {
+        transform: rotateY(-25deg) translate3d(0, 6em, 0);
+    }
+}
+
+.cart-section {
+    position: absolute;
+    top: 6%;
+    right: 25%;
+}
+
+.bar {
+    transform-origin: 0 2.5em 0;
+    animation: grow 7s cubic-bezier(0.19, 1, 0.23, 1);
+}
+
+.bar:nth-child(1) {
+    margin-left: -12em;
+    transform: scaleY(calc(var(--progress) / var(--common-number)));
+    color: var(--cart-color);
+}
+
+.bar:nth-child(2) {
+    margin-left: -6em;
+    transform: scaleY(calc(var(--progress) / var(--common-number)));
+    color: var(--cart-color);
+}
+
+.bar:nth-child(3) {
+    margin-left: 0em;
+    transform: scaleY(calc(var(--progress) / var(--common-number)));
+    color: var(--cart-color)
+}
+
+.bar:nth-child(4) {
+    margin-left: 6em;
+    transform: scaleY(calc(var(--progress) / var(--common-number)));
+    color: var(--cart-color)
+}
+
+.bar:nth-child(5) {
+    margin-left: 12em;
+    transform: scaleY(calc(var(--progress) / var(--common-number)));
+    color: var(--cart-color)
+}
+
+@keyframes grow {
+    0% {
+        transform: scaleY(0);
+    }
+}
+
+.face{
+    margin: -2.5em;
+    width: 5em;
+    height: 5em;
+    backfront-visibility: hidden;
+    /* backface-visibility: hidden; */
+    background: currentColor;
+}
+/* .face:nth-child(n + 2):before{
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    opacity: .1;
+    background: inherit;
+} */
+
+.face:nth-child(1) {
+    transform: rotate3d(1, 0, 0, 90deg) translateZ(2.5em);
+    -webkit-filter: brightness(0.7);
+    filter: brightness(0.7);
+}
+
+.face:nth-child(2) {
+    transform: rotate3d(0, 1, 0, -90deg) translateZ(2.5em);
+    -webkit-filter: brightness(1);
+    filter: brightness(1);
+}
+
+.face:nth-child(3) {
+    transform: rotate3d(0, 1, 0, 0deg) translateZ(2.5em);
+    -webkit-filter: brightness(0.85);
+    filter: brightness(0.85);
+}
+
+.face:nth-child(4) {
+    transform: rotate3d(0, 1, 0, 90deg) translateZ(2.5em);
+    -webkit-filter: brightness(0.55);
+    filter: brightness(0.55);
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 1300px) {
+
+    .main-window {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .main-window .left-part {
+        width: 100%;
+        order: 1;
+    }
+
+    .main-window .cart-inner {
+        order: 1;
+    }
+
+    .main-window .middle-part {
+        order: 2;
+    }
+
+    .main-window .middle-part .cart-section {
+        top: 250px;
+    }
+
+    .main-window .right-part {
+        order: 2;
+        width: 100%;
+    }
+
+    .main-window .left-part p {
+        width: 60%;
+    }
+
+    .main-window .left-part {
+        width: 100%;
+    }
+
+    .cart-section {
+        right: 0px;
+    }
+
+    .main-window .left-part .bottom-part {
+        margin-top: 0px;
+    }
+
+    .main-window .middle-part {
+        width: 100%;
+    }
+
+    .main-window .right-part {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 850px) {
+    .main-window .right-part {
+        margin-top: 600px;
+    }
+
+    .main-window .middle-part .cart-section {
+        top: 380px;
+    }
+
+    .main-window .left-part p {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 676px) {
+    .main-window .right-part {
+        margin-top: 600px;
+    }
+
+    .main-window .middle-part .cart-section {
+        top: 410px;
+    }
+
+    .main-window .left-part p {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 490px) {
+    .main-window .middle-part .cart-section {
+        top: 450px;
+    }
+
+    .main-window .cart_box {
+        width: 500px;
+    }
+
+}
