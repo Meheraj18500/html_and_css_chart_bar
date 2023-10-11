@@ -1,0 +1,415 @@
+/*================= Custom Font =================*/
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url(font/helvetica_neue_condensed_light.ttf);
+}
+
+@font-face {
+    font-family: 'LinuxLibertine';
+    src: url(font/Linux_Libertine_Regular.ttf);
+}
+
+/*================= Basic Setup =================*/
+:root {
+    --progress: ;
+    --common-number: 25;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'LinuxLibertine', sans-serif;
+    background-color: #0d0d0d;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'HelveticaNeue', sans-serif;
+}
+
+p {
+    font-family: 'LinuxLibertine', sans-serif;
+    font-style: italic;
+}
+
+ul li {
+    list-style: none;
+    padding: 0;
+}
+
+section.container {
+    max-width: 1700px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.main-window {
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 5%;
+    background-color: #0d0d0d;
+    color: #fff;
+}
+
+/*================= Gird Container =================*/
+.main-window .left-part {
+    display: flex;
+    flex-direction: column;
+    width: 27%;
+    z-index: 3;
+}
+
+.main-window .right-part {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 360px;
+    position: relative;
+    z-index: 3;
+}
+
+.main-window .middle-part {
+    z-index: 1;
+}
+
+/*================= Left part design =================*/
+.main-window .left-part .logo-box {
+    width: 120px;
+    height: 120px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin-bottom: 80px;
+}
+
+.main-window .left-part h2 {
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin: 0;
+    color: #fff;
+}
+
+.main-window .left-part p {
+    font-size: 25px;
+}
+
+.main-window .left-part .bottom-part {
+    margin-top: 45px;
+}
+
+.main-window .left-part h1 {
+    font-size: 75px;
+    font-weight: 500;
+    margin: 0;
+    color: #d9d947;
+}
+
+
+/*================= Right Part Design =================*/
+.main-window .right-part {
+    display: flex;
+    flex-direction: column;
+    margin-top: 120px;
+}
+
+.main-window .right-part .content-box {
+    display: flex;
+    align-items: top;
+    padding: 5px 0;
+    width: 100%;
+}
+
+.main-window .right-part .content-box .color-bar {
+    width: 70px;
+    height: 70px;
+    line-height: 110px;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.main-window .right-part .content-box .color-bar img {
+    width: 50px;
+    height: 50px;
+}
+
+.main-window .right-part .content-box .content h3 {
+    font-size: 25px;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 400;
+}
+
+.main-window .right-part .content-box .content p {
+    margin: 0;
+    padding: 0;
+    text-transform: none;
+    font-size: 14px;
+    line-height: 18px;
+    color: #f1f1f1;
+}
+
+
+/*================= Middle Part Design =================*/
+.main-window .middle-part {
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.cart-section {
+    position: absolute;
+    top: 18%;
+    right: 32%;
+}
+
+/*================= Chart Functionality with Css =================*/
+.cart_box {
+    overflow: hidden;
+    width: 680px;
+    height: 1060px;
+    padding-top: 380px;
+    perspective: 70em;
+    perspective-origin: 50% calc(50% - 50em);
+    background: transparent;
+}
+
+.cart_box div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+}
+
+.cart_box .bar_progress {
+    transform: rotateY(40deg) translate3d(0, -10em, 5em);
+}
+
+.cart_box .bar_progress ul {
+    display: flex;
+    flex-direction: row;
+    transform: rotateX(88deg) translate(-185px, -84px);
+    text-align: center;
+}
+
+.cart_box .bar_progress ul li {
+    width: 5em;
+    margin-left: 13px;
+}
+.cart_box .bar_progress ul li:nth-child(1){
+    margin:0px;
+}
+
+.cart_box .bar_progress ul li h2 {
+    font-family: sans-serif;
+    font-weight: 900;
+}
+
+.maindiv {
+    transform: rotateY(40deg) translate3d(0, -10em, 5em);
+}
+
+@keyframes move {
+    to {
+        transform: rotateY(-25deg) translate3d(0, 6em, 0);
+    }
+}
+
+.bar {
+    transform-origin: 0 2.5em 0;
+    animation: grow 7s cubic-bezier(0.19, 1, 0.23, 1);
+}
+
+.bar:nth-child(1) {
+    margin-left: -12em;
+    transform: scaleY(calc(var(--progress) / var(--common-number)));
+    color: var(--cart-color);
+}
+
+.bar:nth-child(2) {
+    margin-left: -6em;
+    transform: scaleY(calc(var(--progress) / var(--common-number)));
+    color: var(--cart-color);
+}
+
+.bar:nth-child(3) {
+    margin-left: 0em;
+    transform: scaleY(calc(var(--progress) / var(--common-number)));
+    color: var(--cart-color)
+}
+
+.bar:nth-child(4) {
+    margin-left: 6em;
+    transform: scaleY(calc(var(--progress) / var(--common-number)));
+    color: var(--cart-color)
+}
+
+.bar:nth-child(5) {
+    margin-left: 12em;
+    transform: scaleY(calc(var(--progress) / var(--common-number)));
+    color: var(--cart-color)
+}
+
+.bar:nth-child(6) {
+    margin-left: 18em;
+    transform: scaleY(calc(var(--progress) / var(--common-number)));
+    color: var(--cart-color)
+}
+
+@keyframes grow {
+    0% {
+        transform: scaleY(0);
+    }
+}
+
+.face {
+    margin: -2.5em;
+    width: 5em;
+    height: 5em;
+    backfront-visibility: hidden;
+    background: currentColor;
+}
+
+.face:nth-child(1) {
+    transform: rotate3d(1, 0, 0, 90deg) translateZ(2.5em);
+    -webkit-filter: brightness(0.7);
+    filter: brightness(0.7);
+}
+
+.face:nth-child(2) {
+    transform: rotate3d(0, 1, 0, -90deg) translateZ(2.5em);
+    -webkit-filter: brightness(1);
+    filter: brightness(1);
+}
+
+.face:nth-child(3) {
+    transform: rotate3d(0, 1, 0, 0deg) translateZ(2.5em);
+    -webkit-filter: brightness(0.85);
+    filter: brightness(0.85);
+}
+
+.face:nth-child(4) {
+    transform: rotate3d(0, 1, 0, 90deg) translateZ(2.5em);
+    -webkit-filter: brightness(0.55);
+    filter: brightness(0.55);
+}
+
+
+
+/*================= Responsive Design =================*/
+@media (max-width: 1300px) {
+
+    .main-window {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .main-window .left-part {
+        width: 100%;
+    }
+
+    .main-window .middle-part {
+        order: 2;
+    }
+
+    .main-window .middle-part .cart-section {
+        top: 250px;
+    }
+
+    .main-window .right-part {
+        order: 2;
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .main-window .right-part .content-box .content p {
+        width: 40%;
+    }
+
+    .main-window .left-part p {
+        width: 60%;
+    }
+
+    .main-window .left-part {
+        width: 100%;
+    }
+
+    .cart-section {
+        right: 100px;
+    }
+
+    .main-window .left-part .bottom-part {
+        margin-top: 0px;
+    }
+
+    .main-window .middle-part {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 1040px) {
+    .main-window .right-part .content-box .content p {
+        width: 60%;
+    }
+
+    .main-window .right-part {
+        margin-top: 660px;
+    }
+
+    .main-window .middle-part .cart-section {
+        top: 525px;
+    }
+
+    .main-window .left-part p {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 715px) {
+    .main-window .right-part {
+        margin-top: 700px;
+    }
+
+    .main-window .middle-part .cart-section {
+        top: 570px;
+    }
+
+    .main-window .left-part p {
+        width: 100%;
+    }
+
+    .main-window .right-part .content-box .content p {
+        width: 100%;
+    }
+
+    .cart-section {
+        right: 6%;
+    }
+
+}
+
+@media (max-width: 560px) {
+
+    .cart-section {
+        right: 0%;
+        transform: scale(0.7) translateX(100px);
+    }
+
+    .main-window .cart_box {
+        width: 660px;
+    }
+
+}
